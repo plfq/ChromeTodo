@@ -1,0 +1,26 @@
+{
+    "name": "@Todo",
+    "version": "0.8.0",
+    "manifest_version": 2,
+    "icons": {
+        "16": "images/icon.png",
+        "48": "images/icon.png",
+        "128": "images/icon.png"
+    },
+    "description": "@todo是一种态度",
+    "homepage_url": "http://127.0.0.1",
+    "background": {
+        "page": "background.html"
+    },
+    "permissions": [
+        "contextMenus",
+        "notifications",
+        "tabs",
+        "http://*/*", "https://*/*"
+    ],
+    "browser_action": {
+        "default_title": "@todo是一种态度",
+        "default_icon": "images/icon.png",
+        "default_popup": "popup.html"
+    }
+}

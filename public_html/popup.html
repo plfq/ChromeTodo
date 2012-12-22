@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>
+            @Todo列表
+        </title>
+		<link rel="stylesheet" href="css/popup.css" />
+		<link rel="stylesheet" href="css/jquery.ui.css" />
+        <script src="js/jquery.js" ></script>
+        <script src="js/jquery.ui.js" ></script>
+        <script src="js/function.js" ></script>
+        <script src="js/jquery.tmpl.js" ></script>
+        <script src="js/popup.js" ></script>
+        <script src="js/loading.js" ></script>
+        <script src="js/login.js" ></script>
+        <script src="js/list.js" ></script>
+    </head>
+    <body>
+	
+	<style type="text/css">
+	
+	</style>
+	<!-- 添加新的todo -->
+	<div class="newtodo" id="newtodo">
+
+		<textarea maxlength="84" rows="4" ></textarea>
+		<div class="folder">
+			<span class="folderone" data-id="today">今天</span>
+			<span class="folderone" data-id="tomorrow">明天</span>
+			<span class="folderone" data-id="week">本周</span>
+			<span class="folderone" data-id="later">以后</span>
+			<span class="folderone" data-id="note">备忘</span>
+		</div>
+		<div class="input">
+			<input type="button" value="添加" data-type="add"/>
+			<input type="button" value="取消" data-type="back"/>
+		</div>
+	</div>
+		<!-- 这个加载，更新的页面 -->
+		<div class="main">
+			<!-- 菜单 -->
+			<div class="menu">
+				<span class="menu_one todo_list" title="待办">
+				
+				</span>
+				<span class="menu_one finish_list_button" title="已完成">
+				
+				</span>
+				<span class="addtodo" title="添加">+</span>
+				<span class="menu_one user_center" title="其他">
+				
+				</span>
+				
+			</div>
+			
+			<div class="listbox">
+			<!-- 今天列表 -->
+			<div class="list" id="today">
+				<!-- 标题 -->
+				<div class="title">
+					<span class="name">今天</span>
+					<span class="count">@Todo</span>
+				</div>
+				<!-- 列表 -->
+				<div class="todolist">
+					<!-- 主页表现是的 -->
+					
+				</div>
+			
+			</div>	
+			<!-- 明天列表 -->
+			<div class="list" id="tomorrow">
+				<!-- 标题 -->
+				<div class="title">
+					<span class="name">明天</span>
+					<span class="count">@Todo</span>
+				</div>
+				<!-- 列表 -->
+				<div class="todolist">
+				</div>
+			</div>
+			
+			
+			<!-- 本周列表 -->
+			<div class="list" id="week">
+				<!-- 标题 -->
+				<div class="title">
+					<span class="name">本周</span>
+					<span class="count">@Todo</span>
+				</div>
+				<!-- 列表 -->
+				<div class="todolist">
+				</div>
+			</div>
+			
+			<!-- 以后列表 -->
+			<div class="list" id="later">
+				<!-- 标题 -->
+				<div class="title">
+					<span class="name">以后</span>
+					<span class="count">@Todo</span>
+				</div>
+				<!-- 列表 -->
+				<div class="todolist">
+				</div>
+			</div>
+				
+			<!-- 备忘录列表 -->
+			<div class="list" id="note">
+				<!-- 标题 -->
+				<div class="title">
+					<span class="name">备忘</span>
+					<span class="count">@Todo</span>
+				</div>
+				<!-- 列表 -->
+				<div class="todolist">	
+				</div>
+			</div>
+			
+			
+			
+			</div>
+			
+			<!-- 已经完成的页面 -->
+			<div class="finish_list">
+			
+				<div class="list" id="finish">
+					<!-- 标题 -->
+					<div class="title">
+						<span class="name">已完成</span>
+						
+					</div>
+					<!-- 列表 -->
+					<div class="todolist">	
+					</div>
+				</div>
+			
+			</div>
+			
+			
+			
+		</div>
+		
+		<!-- 设置目录 -->
+		<div class="seting">
+		
+			<div class="setone">
+			每周发送Email报表
+			<input type="radio" name="weekEmail" data-value="1" value="1" checked="checked"/>开启
+			<input type="radio" name="weekEmail" data-value="1" value="0" />关闭
+			</div>
+			<div class="setone settag">
+			设置标签
+			</div>
+			
+			<div class="setone">
+				<input type="button" id="setsubmit" value="提交"/>
+				<input type="button" id="setback" value="取消"/>
+			</div>
+			
+		</div>
+			
+		
+		<!-- 提醒设置 -->
+		<div class="remindbox">
+		<div id="datepicker"></div>
+		<div class="input">
+		时间:<input type="text" id="date_day" name="date" readonly="readonly"/>
+		<select name="hour" id="date_hour">
+				<option value="01">01</option>
+				<option value="02">02</option>
+				<option value="03">03</option>
+				<option value="04">04</option>
+				<option value="05">05</option>
+				<option value="06">06</option>
+				<option value="07">07</option>
+				<option value="08">08</option>
+				<option value="09">09</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="13">13</option>
+				<option value="14">14</option>
+				<option value="15">15</option>
+				<option value="16">16</option>
+				<option value="17">17</option>
+				<option value="18">18</option>
+				<option value="19">19</option>
+				<option value="20">20</option>
+				<option value="21">21</option>
+				<option value="22">22</option>
+				<option value="23">23</option>
+				<option value="24">24</option>
+				</select>:
+				<select id="date_min" name="min"><option value="00" selected="selected">00</option><option value="05">05</option><option value="10">10</option><option value="15">15</option><option value="20">20</option><option value="25">25</option><option value="30">30</option><option value="35">35</option><option value="40">40</option><option value="45">45</option><option value="50">50</option><option value="55">55</option></select>
+		</div>
+		<div class="input">
+			<input type="button" value="开启" id="set_remind" data-id=""/>
+			<input type="button" value="取消" id="remindback"/>
+		</div>
+
+		</div>
+		
+		<!-- 数据加载页面 -->
+		<div class="loading">
+			<img src="images/loading.gif" alt="" />
+			<div>正在加载数据</div>
+		</div>
+		
+		<!-- 登陆界面 -->
+        <div id="login">
+			<div class="input">
+				邮箱：<input type="text" name="email" id="email"/>
+			</div>
+			<div class="input">
+				密码：<input type="password" name="password" id="password"/>
+			</div>			
+			<div class="input">
+				<input type="button" value="登陆" id="login_button"/>
+			</div>
+			<div class="input">
+				<p class="login_msg"></p>
+			</div>
+		</div>
+    </body>
+</html>
