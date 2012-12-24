@@ -1,3 +1,34 @@
+function getAjaxReturn(success_function, fail_function)
+{
+    var bol = false;
+    $.ajax({type: "POST", url: "ajax/userexist.aspx", data: "username=" + vusername.value, success: function(msg) {
+            if (msg == "ok") {
+                showtipex(vusername.id, "<img src='images/ok.gif'/><b><font color='#ffff00'>该用户名可以使用</font></b>", false)
+                success_function(msg);
+            }
+            else
+            {
+                showtipex(vusername.id, "<img src='images/cancel.gif'/><b><font color='#ffff00'>该用户已被注册</font></b>", false);
+                vusername.className = "bigwrong";
+                fail_function(msg);
+//return false; 
+            }
+        }
+    });
+}
+function success_function(info)
+{
+//do what you want do 
+    alert(info);
+}
+function fail_function(info)
+{
+//do what you want do 
+    alert(info);
+}
+
+//exlampl end
+
 function send(action, data) {
     if (localStorage.ssid) {
         data = json2one(data, {ssid: localStorage.ssid});
@@ -8,7 +39,6 @@ function send(action, data) {
         r = json;
     });
     return r;
-
 }
 
 function modify(data, action) {
@@ -60,7 +90,6 @@ function addtodo(data) {
                     + '<span class="addnote"></span><span class="remind" data-id="' + json.id + '"></span>'
                     + '</div></div</div>';
             $('#' + data.folder + '>.todolist').append(todo_html);
-
         }
 
         return json;
@@ -82,7 +111,6 @@ function modifytag(data) {
     $.getJSON("http://todoapi.sinaapp.com/index.php/Modify/modifyTag", data, function(json) {
         return json;
     });
-
 }
 /*合并两个json*/
 function json2one(des, src, override) {
@@ -122,7 +150,6 @@ function getRemind() {
                         '您有Todo提醒',
                         json.data[i].content
                         );
-
                 notification.show();
             }
         }

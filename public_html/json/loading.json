@@ -8,8 +8,8 @@
         }
     },
     "tags": {
-        "1":{
-            "id":1,"name":"重要","color":"#EECCAA"
-            }
+        "1": {
+            "id": 1, "name": "重要", "color": "#EECCAA"
+        }
     }
 }
