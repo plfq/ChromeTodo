@@ -7,16 +7,17 @@ $(document).ready(function() {
     } else {
         //监听登陆按钮
         $("#login_button").click(function() {
+            
             var email_val = $("#email").val();
             var psw_val = $("#password").val();
-            $.getJSON("../json/login.json", {email: email_val, password: psw_val}, function(data) {
-                if (data.status) {
-                    localStorage.ssid = data.ssid;
-                    data_loading();
-                } else {
-                    $(".login_msg").html('登陆失败！');
-                }
-            });
+            r = send({obj: 'login', action: 'index'}, {email: email_val, password: psw_val});
+            
+            if (r.status) {
+                localStorage.ssid = r.ssid;
+                data_loading();
+            } else {
+                $(".login_msg").html('登陆失败！');
+            }
         });
     }
 });

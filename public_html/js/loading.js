@@ -24,23 +24,19 @@ function eval_loading(json) {
         for (i_t in folder) {
             todo = folder[i_t];
             if (i_f === "finish") {
-                todo_html = '<div class="todo" draggable="true"><span class="tag" id="tag_'
-                        + todo.tag + '" ></span><span class="finish_content" >'
+
+                todo_html = '<div class="todo" draggable="true"><span class="tag" id="tag_' + todo.tag + '" ></span><span class="finish_content" >'
                         + todo.content + '</span>'
+
                         + '</div>';
                 $('#' + i_f + '>.todolist').append(todo_html);
             } else {
-                todo_html = '<div class="todo" draggable="true"><span class="tag" id="tag_'
-                        + todo.tag + '" >'
-                        + gettagname(todo.tag)
-                        + '</span><span class="content" >'
-                        + todo.content + '</span><span class="checked" data-id="'
-                        + todo.id + '"></span><div class="modify" ><textarea class="textarea" maxlength="84" rows="4" data-id="' + todo.id + '">'
-                        + todo.content + '</textarea><div class="tool"><span class="tagslist" data-id="'
-                        + todo.id + '">'//下面是所有的标签
+                todo_html = '<div class="todo" draggable="true"><span class="tag" id="tag_' + todo.tag + '" >' + gettagname(todo.tag) + '</span><span class="content" >'
+                        + todo.content + '</span><span class="checked" data-id="' + todo.id + '"></span><div class="modify" ><textarea class="textarea" maxlength="84" rows="4" data-id="' + todo.id + '">'
+                        + todo.content + '</textarea><div class="tool"><span class="tagslist" data-id="' + todo.id + '">'//下面是所有的标签
                         + eval_tags(todo.tag, json['tags']) + '</span>'
-                        + '<span class="addnote"></span><span class="remind'
-                        + isremind(todo.remind) + '" data-id="' + todo.id + '"></span>'
+
+                        + '<span class="addnote"></span><span class="remind' + isremind(todo.remind) + '" data-id="' + todo.id + '"></span>'
                         + '</div></div></div>';
                 $('#' + i_f + '>.todolist').append(todo_html);
             }
