@@ -1,0 +1,15 @@
+
+{
+    "list": {
+        "today": {
+            "0": {
+                "id": 1, "tag": 1, "content": "tftytf"
+            }
+        }
+    },
+    "tags": {
+        "1": {
+            "id": 1, "name": "重要", "color": "#EECCAA"
+        }
+    }
+}
