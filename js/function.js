@@ -1,53 +1,4 @@
-function getAjaxReturn(success_function, fail_function)
-{
-    var bol = false;
-    $.ajax({type: "POST", url: "ajax/userexist.aspx", data: "username=" + vusername.value, success: function(msg) {
-            if (msg == "ok") {
-                showtipex(vusername.id, "<img src='images/ok.gif'/><b><font color='#ffff00'>该用户名可以使用</font></b>", false)
-                success_function(msg);
-            }
-            else
-            {
-                showtipex(vusername.id, "<img src='images/cancel.gif'/><b><font color='#ffff00'>该用户已被注册</font></b>", false);
-                vusername.className = "bigwrong";
-                fail_function(msg);
-//return false; 
-            }
-        }
-    });
-}
-function success_function(info)
-{
-//do what you want do 
-    alert(info);
-}
-function fail_function(info)
-{
-//do what you want do 
-    alert(info);
-}
 
-//exlampl end
-
-function send(action, data) {
-    if (localStorage.ssid) {
-        data = json2one(data, {ssid: localStorage.ssid});
-    }
-
-    url = "../json/" + action.obj + '_' + action.action + '.json';
-    $.getJSON(url, data, function(json) {
-        r = json;
-    });
-    return r;
-}
-
-function modify(data, action) {
-    if (action === undefined) {
-        action = 'one';
-    }
-    r = send({obj: 'Modify', action: action}, data);
-    return r;
-}
 
 
 /*Old code*/
@@ -60,22 +11,7 @@ function modifySend(data) {
     });
 }
 
-/*监听右键菜单*/
-function add2today(info, tab) {
-    addtodo({floder: 'today', content: info.selectionText});
-}
-function add2tomorrow(info, tab) {
-    addtodo({floder: 'tomorrow', content: info.selectionText});
-}
-function add2week(info, tab) {
-    addtodo({floder: 'week', content: info.selectionText});
-}
-function add2later(info, tab) {
-    addtodo({floder: 'later', content: info.selectionText});
-}
-function add2note(info, tab) {
-    addtodo({floder: 'note', content: info.selectionText});
-}
+
 
 /*添加到目录和Ajax操作*/
 function addtodo(data) {

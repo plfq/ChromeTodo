@@ -6,7 +6,22 @@ var selection = chrome.contextMenus.create({"title": "本周", "contexts": ["all
 var selection = chrome.contextMenus.create({"title": "以后", "contexts": ["all"], "onclick": add2later, "parentId": fatherId});
 var selection = chrome.contextMenus.create({"title": "备忘", "contexts": ["all"], "onclick": add2note, "parentId": fatherId});
 
-
+/*监听右键菜单*/
+function add2today(info, tab) {
+    addtodo({floder: 'today', content: info.selectionText});
+}
+function add2tomorrow(info, tab) {
+    addtodo({floder: 'tomorrow', content: info.selectionText});
+}
+function add2week(info, tab) {
+    addtodo({floder: 'week', content: info.selectionText});
+}
+function add2later(info, tab) {
+    addtodo({floder: 'later', content: info.selectionText});
+}
+function add2note(info, tab) {
+    addtodo({floder: 'note', content: info.selectionText});
+}
 getTodayCount();
 setInterval(function() {
     getRemind();
